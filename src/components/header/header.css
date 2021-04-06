@@ -1,0 +1,29 @@
+.header {
+    overflow: hidden;
+    height: 170px;
+    position: relative;
+    text-align: center;
+}
+
+.header__background {
+    background: linear-gradient(rgba(0,0,0,0.7) 1%, black 90%);
+    height: 170px;
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+}
+
+.header__title {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    color: white;
+    font-size: 24px;
+    font-family: Roboto, serif;
+}
+
+.header__image {
+    height: 300px;
+    width: 100%;
+}
