@@ -1,52 +1,46 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './day.css';
+import Hour from '../hour';
+import {useQuery} from '@apollo/client';
+import {formatDate, sliceHours} from '../../helpers/functions';
+import {GetDayWeather, userLocation} from '../../helpers/constants';
 
 const Day = () => {
-  return (
-    <div className="day">
-      <img className="day__location-icon" src="./location.ico" alt="err"/>
-      <p className="day__location">City</p>
-      <p className="day__date">mon, 6 may, 11:33</p>
-      <div className="day__current">
-        <div className="day__container">
-          <img className="day__current_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__current_temperature">3°</p>
+  const currentLocation = useContext(userLocation);
+
+  const {data} = useQuery(GetDayWeather, {
+    variables: {
+      name: currentLocation,
+    }
+  });
+
+  if (data.getCity) {
+    return (
+      <div className="day">
+        <img className="day__location-icon" src="./location.ico" alt="err"/>
+        <p className="day__location">{data.getCity.location.name}</p>
+        <p className="day__date">{formatDate(data.getCity.location.localTime)}</p>
+        <div className="day__current">
+          <div className="day__container">
+            <img className="day__current_icon" src={data.getCity.current.condition.icon} alt="src"/>
+            <p className="day__current_temperature">{data.getCity.current.temperature}°</p>
+          </div>
+          <ul className="day__current_details">
+            <li>{data.getCity.current.condition.title}</li>
+            <li>{data.getCity.current.maxTemp.split('.')[0]}°/{data.getCity.current.minTemp.split('.')[0]}°</li>
+            <li>Feels like {data.getCity.current.feelsLike.split('.')[0]}°</li>
+          </ul>
         </div>
-        <ul className="day__current_details">
-          <li>Cloudy</li>
-          <li>7°/-2°</li>
-          <li>Feels like -2°</li>
+        <ul className="day__hours">
+          {sliceHours(data.getCity.current.hours, data.getCity.location.localTime).map(el => (
+            <Hour key={el.hour} data={el}/>
+          ))}
         </ul>
       </div>
-      <ul className="day__hours">
-        <li>
-          <p className="day__hours_time">12:00</p>
-          <img className="day__hours_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__hours_temperature">4°</p>
-        </li>
-        <li>
-          <p className="day__hours_time">12:00</p>
-          <img className="day__hours_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__hours_temperature">4°</p>
-        </li>
-        <li>
-          <p className="day__hours_time">12:00</p>
-          <img className="day__hours_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__hours_temperature">4°</p>
-        </li>
-        <li>
-          <p className="day__hours_time">12:00</p>
-          <img className="day__hours_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__hours_temperature">4°</p>
-        </li>
-        <li>
-          <p className="day__hours_time">12:00</p>
-          <img className="day__hours_icon" src="./cloudy.png" alt="src"/>
-          <p className="day__hours_temperature">4°</p>
-        </li>
-      </ul>
-    </div>
-  );
+    );
+  }
+
+  return <p>Error!</p>;
 };
 
 export default Day;

@@ -1,124 +1,34 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './week.css';
+import {useQuery} from '@apollo/client';
+import {GetWeekWeather, userLocation} from '../../helpers/constants';
+import WeekDay from '../weekDay';
 
 const Week = () => {
-  return (
-    <ul className="week">
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
-      <li className="week__item">
-        <div className="week__date">
-          <p className="week__day">Today</p>
-          <div className="week__possession">
-            <div className="week__possession_icon"/>
-            <p className="week__possession_text">40%</p>
-          </div>
-        </div>
-        <div className="week__temperature">
-          <div className="week__icons">
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-            <img className="week__temperature_icon" src="./cloudy.png" alt="src"/>
-          </div>
-          <p className="week__temperature_text">7°/-2°</p>
-        </div>
-      </li>
+  const currentLocation = useContext(userLocation);
 
-    </ul>
-  );
+  const {data} = useQuery(GetWeekWeather, {
+    variables: {
+      name: currentLocation,
+    }
+  });
+
+
+  if (data.getCity) {
+    return (
+      <ul className="week">
+        <li className="week__yesterday">
+          Yesterday
+          <span className="week__span">
+            {data.getCity.yesterday.maxTemp.split('.')[0]}°/{data.getCity.yesterday.minTemp.split('.')[0]}°
+          </span>
+        </li>
+        {data.getCity.weekInfo.map(el => <WeekDay key={el.date} data={el}/>)}
+      </ul>
+    );
+  }
+
+  return <p>Error!</p>;
 };
 
 export default Week;

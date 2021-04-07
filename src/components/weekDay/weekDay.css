@@ -1,0 +1,45 @@
+.week__item {
+  display: flex;
+  flex-direction: row;
+  padding: 0 17px 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.week__date {
+  flex-direction: row;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.week__temperature {
+  flex-direction: row;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.week__possession_icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 0 50% 50% 50%;
+  border: 1px solid deepskyblue;
+  transform: rotate(45deg);
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.week__possession_text {
+  color: gray;
+}
+
+.week__possession {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.week__temperature_icon {
+  width: 18px;
+}
