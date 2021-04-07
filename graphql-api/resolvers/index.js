@@ -3,8 +3,8 @@ const axios = require('axios');
 const WEATHER_API_CURRENT = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.KEY}`;
 const WEATHER_API_YESTERDAY = `http://api.weatherapi.com/v1/history.json?key=${process.env.KEY}`;
 
-const getYesterday = time => {
-  const date = new Date(new Date(time).setDate(new Date().getDate() - 1));
+const getYesterday = () => {
+  const date = new Date(new Date().setDate(new Date().getDate() - 1));
 
   return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
 };
