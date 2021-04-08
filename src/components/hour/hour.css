@@ -1,16 +1,28 @@
 .day__hours_icon {
   width: 25px;
   height: 25px;
+  margin: 0 auto;
+  display: flex;
+  padding-bottom: 2px;
 }
 
 .day__hours_temperature {
   color: white;
   text-align: center;
+  padding-left: 2px;
   font-size: 14px;
+}
+
+.day__hour {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .day__hours_time {
   font-size: 12px;
   color: gray;
+  text-align: center;
   padding-bottom: 5px;
 }

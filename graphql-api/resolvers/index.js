@@ -44,7 +44,8 @@ const resolvers = {
             region: data.location.region,
             country: data.location.country,
             timeZone: data.location.tz_id,
-            localTime: data.location.localtime_epoch
+            localTime: data.location.localtime_epoch,
+            localTimeString: data.location.localtime.split(' ')[1]
           },
           current: {
             temperature: data.current.temp_c,
@@ -64,6 +65,7 @@ const resolvers = {
             cloud: data.current.cloud,
             isNight: !data.current.is_day,
             hours: getHoursWeather(data.forecast.forecastday[0].hour),
+            moreHours: getHoursWeather(data.forecast.forecastday[1].hour)
           },
           weekInfo: getWeekWeather(data.forecast.forecastday),
           yesterday: {

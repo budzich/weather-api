@@ -6,7 +6,7 @@ import {useQuery} from '@apollo/client';
 import {GetWeather, userLocation} from '../../helpers/constants';
 
 const Body = () => {
-  const currentLocation = useContext(userLocation);
+  const [currentLocation] = useContext(userLocation);
 
   const {data, loading} = useQuery(GetWeather, {
     variables: {

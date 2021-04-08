@@ -19,6 +19,7 @@ export const GetWeather = gql`
             location {
                 name
                 localTime
+                localTimeString
             }
             current {
                 temperature
@@ -30,6 +31,11 @@ export const GetWeather = gql`
                     icon
                 }
                 hours {
+                    temperature
+                    icon
+                    hour
+                }
+                moreHours {
                     temperature
                     icon
                     hour
@@ -56,6 +62,7 @@ export const GetDayWeather = gql`
             location {
                 name
                 localTime
+                localTimeString
             }
             current {
                 temperature
@@ -67,6 +74,11 @@ export const GetDayWeather = gql`
                     icon
                 }
                 hours {
+                    temperature
+                    icon
+                    hour
+                }
+                moreHours {
                     temperature
                     icon
                     hour

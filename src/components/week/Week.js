@@ -5,7 +5,7 @@ import {GetWeekWeather, userLocation} from '../../helpers/constants';
 import WeekDay from '../weekDay';
 
 const Week = () => {
-  const currentLocation = useContext(userLocation);
+  const [currentLocation] = useContext(userLocation);
 
   const {data} = useQuery(GetWeekWeather, {
     variables: {

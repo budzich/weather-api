@@ -6,12 +6,14 @@
   min-height: 100vh;
   padding-bottom: 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
 p {
   margin: 0;
   padding: 0;
   color: white;
+  font-family: Roboto, serif;
 }
 
 .alert {
@@ -23,5 +25,19 @@ ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+input {
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
 }
 

@@ -1,0 +1,36 @@
+.location {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.location-border {
+    border-radius: 0 5px 5px 0;
+}
+
+.location__icon {
+    width: 40%;
+    height: 40%;
+    padding: 12px;
+}
+.location__search {
+    position: fixed;
+    right: 55px;
+    top: 15px;
+    z-index: 1;
+    height: 38px;
+    width: calc(100% - 80px);
+    background: rgba(0,0,0,0.3);
+    border-right: none;
+    font-size: 20px;
+    margin: 0;
+    padding-left: 10px;
+    color: #b1b1b1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
