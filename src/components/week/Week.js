@@ -13,22 +13,17 @@ const Week = () => {
     }
   });
 
-
-  if (data.getCity) {
-    return (
-      <ul className="week">
-        <li className="week__yesterday">
-          Yesterday
-          <span className="week__span">
+  return (
+    <ul className="week">
+      <li className="week__yesterday">
+        Yesterday
+        <span className="week__span">
             {data.getCity.yesterday.maxTemp.split('.')[0]}°/{data.getCity.yesterday.minTemp.split('.')[0]}°
           </span>
-        </li>
-        {data.getCity.weekInfo.map(el => <WeekDay key={el.date} data={el}/>)}
-      </ul>
-    );
-  }
-
-  return <p>Error!</p>;
+      </li>
+      {data.getCity.weekInfo.map(el => <WeekDay key={el.date} data={el}/>)}
+    </ul>
+  );
 };
 
 export default Week;

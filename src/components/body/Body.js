@@ -13,6 +13,7 @@ const Body = () => {
       name: currentLocation,
     }
   });
+
   if (loading) {
     return <p className="alert">Loading...</p>;
   }

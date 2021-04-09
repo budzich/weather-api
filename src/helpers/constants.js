@@ -2,14 +2,25 @@ import {gql} from '@apollo/client/core';
 import {createContext} from 'react';
 
 export const days = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday'
+  'sunday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday'
 ];
+
+export const settings = {
+  items: 5,
+  loop: false,
+  nav: false,
+  controls: false,
+  speed: 200,
+  swipeAngel: false,
+  Edgepadding: 17
+};
+
 
 export const userLocation = createContext('Novopolotsk');
 
@@ -73,6 +84,19 @@ export const GetDayWeather = gql`
                     title
                     icon
                 }
+            }
+
+        }
+    }
+`;
+
+export const GetHoursWeather = gql`
+    query GetWeather($name: String!) {
+        getCity(name: $name) {
+            location {
+                localTimeString
+            }
+            current {
                 hours {
                     temperature
                     icon
@@ -105,3 +129,5 @@ export const GetWeekWeather = gql`
         }
     }
 `;
+
+export const currentHours = new Date().getHours();
