@@ -1,6 +1,6 @@
 import React from 'react';
 import './hoursInfo.css'
-import {currentHours, GetHoursWeather, settings, userLocation} from '../../helpers/constants';
+import {GetHoursWeather, settings, userLocation} from '../../helpers/constants';
 import {useQuery} from '@apollo/client';
 import {useContext} from 'react';
 import {sliceHours} from '../../helpers/functions';
@@ -21,10 +21,10 @@ const HoursInfo = () => {
       {sliceHours(
         data.getCity.current.hours,
         data.getCity.current.moreHours,
-        data.getCity.location.localTimeString
+        data.getCity.location.localTimeDifference
       ).map(el => (
         <Hour key={el.hour} data={el}
-              difference={data.getCity.location.localTimeString.split(':')[0] - currentHours}/>
+              difference={data.getCity.location.localTimeDifference}/>
       ))}
     </TinySlider>
   );

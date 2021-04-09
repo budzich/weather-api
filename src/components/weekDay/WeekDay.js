@@ -2,7 +2,7 @@ import React from 'react';
 import './weekDay.css';
 import {formatDay} from '../../helpers/functions';
 
-const WeekDay = ({data: {minTemperature, maxTemperature, date, icon, humidity}}) => {
+const WeekDay = ({data: {minTemperature, maxTemperature, date, icon, nightIcon, humidity}}) => {
   return (
     <li className="week__item">
       <div className="week__date">
@@ -19,7 +19,7 @@ const WeekDay = ({data: {minTemperature, maxTemperature, date, icon, humidity}})
       <div className="week__temperature">
         <div className="week__icons">
           <img className="week__temperature_icon" src={icon} alt="src"/>
-          <img className="week__temperature_icon" src={icon} alt="src"/>
+          <img className="week__temperature_icon" src={nightIcon} alt="src"/>
         </div>
         <p className="week__temperature_text">{maxTemperature.split('.')[0]}°/{minTemperature.split('.')[0]}°</p>
       </div>

@@ -30,7 +30,7 @@ export const GetWeather = gql`
             location {
                 name
                 localTime
-                localTimeString
+                localTimeDifference
             }
             current {
                 temperature
@@ -55,6 +55,7 @@ export const GetWeather = gql`
             weekInfo {
                 humidity
                 icon
+                nightIcon
                 maxTemperature
                 minTemperature
                 date
@@ -73,7 +74,7 @@ export const GetDayWeather = gql`
             location {
                 name
                 localTime
-                localTimeString
+                localTimeDifference
             }
             current {
                 temperature
@@ -94,7 +95,7 @@ export const GetHoursWeather = gql`
     query GetWeather($name: String!) {
         getCity(name: $name) {
             location {
-                localTimeString
+                localTimeDifference
             }
             current {
                 hours {
@@ -118,6 +119,7 @@ export const GetWeekWeather = gql`
             weekInfo {
                 humidity
                 icon
+                nightIcon
                 maxTemperature
                 minTemperature
                 date

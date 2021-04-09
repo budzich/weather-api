@@ -18,6 +18,7 @@ const typeDefs = gql`
         maxTemperature: String
         date: Int
         icon: String
+        nightIcon: String
         humidity: Int
     }
 
@@ -27,7 +28,7 @@ const typeDefs = gql`
         country: String
         timeZone: String
         localTime: Int
-        localTimeString: String
+        localTimeDifference: String
     }
 
     type Current {

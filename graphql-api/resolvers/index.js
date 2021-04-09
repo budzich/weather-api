@@ -23,7 +23,8 @@ const getWeekWeather = days => days.map(el => ({
   maxTemperature: el.day.maxtemp_c,
   date: el.date_epoch,
   icon: el.day.condition.icon,
-  humidity: el.day.avghumidity
+  nightIcon: el.hour[2].condition.icon,
+  humidity: el.day.avghumidity,
 }));
 
 const resolvers = {
@@ -45,7 +46,7 @@ const resolvers = {
             country: data.location.country,
             timeZone: data.location.tz_id,
             localTime: data.location.localtime_epoch,
-            localTimeString: data.location.localtime.split(' ')[1]
+            localTimeDifference: +data.location.localtime.split(' ')[1].split(':')[0] - new Date().getHours()
           },
           current: {
             temperature: data.current.temp_c,

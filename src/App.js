@@ -17,7 +17,7 @@ const App = () => {
     });
   }, [geo]);
 
-  const [currentLocation, setCurrentLocation] = useState('Manila');
+  const [currentLocation, setCurrentLocation] = useState('Sri Jayewardenepura Kotte');
 
   return (
     <userLocation.Provider value={[currentLocation, setCurrentLocation]}>
