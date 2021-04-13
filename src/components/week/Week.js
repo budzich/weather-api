@@ -18,7 +18,7 @@ const Week = () => {
       <li className="week__yesterday">
         Yesterday
         <span className="week__span">
-            {data.getCity.yesterday.maxTemp.split('.')[0]}°/{data.getCity.yesterday.minTemp.split('.')[0]}°
+            {data.getCity.yesterday.maxTemp.split('.')[0]}°/ {data.getCity.yesterday.minTemp.split('.')[0]}°
           </span>
       </li>
       {data.getCity.weekInfo.map(el => <WeekDay key={el.date} data={el}/>)}

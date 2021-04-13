@@ -6,7 +6,11 @@
     "dev": "nodemon -r dotenv/config index.js"
   },
   "dependencies": {
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "apollo-server": "^2.22.2",

@@ -21,6 +21,15 @@ export const settings = {
   Edgepadding: 17
 };
 
+export const menuSettings = {
+    items: 1,
+    loop: false,
+    nav: true,
+    controls: false,
+    speed: 320,
+    swipeAngel: false,
+    autoWidth: true,
+};
 
 export const userLocation = createContext('Novopolotsk');
 
@@ -131,5 +140,3 @@ export const GetWeekWeather = gql`
         }
     }
 `;
-
-export const currentHours = new Date().getHours();

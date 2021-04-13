@@ -21,7 +21,7 @@ const WeekDay = ({data: {minTemperature, maxTemperature, date, icon, nightIcon, 
           <img className="week__temperature_icon" src={icon} alt="src"/>
           <img className="week__temperature_icon" src={nightIcon} alt="src"/>
         </div>
-        <p className="week__temperature_text">{maxTemperature.split('.')[0]}°/{minTemperature.split('.')[0]}°</p>
+        <p className="week__temperature_text">{maxTemperature.split('.')[0]}°/ {minTemperature.split('.')[0]}°</p>
       </div>
     </li>
   );

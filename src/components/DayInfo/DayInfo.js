@@ -38,7 +38,7 @@ const DayInfo = () => {
         </div>
         <ul className="day__current_details">
           <li>{data.getCity.current.condition.title}</li>
-          <li>{data.getCity.current.maxTemp.split('.')[0]}°/{data.getCity.current.minTemp.split('.')[0]}°</li>
+          <li>{data.getCity.current.maxTemp.split('.')[0]}° / {data.getCity.current.minTemp.split('.')[0]}°</li>
           <li>Feels like {data.getCity.current.feelsLike.split('.')[0]}°</li>
         </ul>
       </div>
