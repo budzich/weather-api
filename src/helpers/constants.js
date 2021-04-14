@@ -1,6 +1,15 @@
 import {gql} from '@apollo/client/core';
 import {createContext} from 'react';
 
+export const SEARCH_CLOSED = 'visually-hidden';
+export const SEARCH_OPENED = 'search';
+export const SEARCH_HIDDEN = 'hidden-search';
+
+export const MENU_CLOSED = 'visually-hidden';
+export const MENU_OPENED = 'menu';
+export const MENU_HIDDEN = 'hidden-menu';
+
+
 export const days = [
   'sunday',
   'monday',
@@ -19,16 +28,6 @@ export const settings = {
   speed: 200,
   swipeAngel: false,
   Edgepadding: 17
-};
-
-export const menuSettings = {
-    items: 1,
-    loop: false,
-    nav: true,
-    controls: false,
-    speed: 320,
-    swipeAngel: false,
-    autoWidth: true,
 };
 
 export const userLocation = createContext('Novopolotsk');

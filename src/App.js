@@ -2,11 +2,10 @@ import './App.css';
 import Header from './components/header';
 import Body from './components/body';
 import React, {useState} from 'react';
-import {menuSettings, userLocation} from './helpers/constants';
+import {userLocation} from './helpers/constants';
 import LocationButton from './components/locationButton';
 import {useEffect} from 'react';
 import Menu from "./components/menu";
-import TinySlider from 'tiny-slider-react';
 
 const App = () => {
   const geo = navigator.geolocation;
@@ -23,14 +22,16 @@ const App = () => {
 
   return (
     <userLocation.Provider value={[currentLocation, setCurrentLocation]}>
-      <TinySlider settings={menuSettings} className="App">
-        <Menu/>
-        <div className="App__info">
-          <LocationButton/>
-          <Header/>
-          <Body/>
+      <div id="app" className="App">
+        <div className="App__slider">
+          <Menu/>
+          <div className="App__info">
+            <LocationButton/>
+            <Header/>
+            <Body/>
+          </div>
         </div>
-      </TinySlider>
+      </div>
     </userLocation.Provider>
   );
 };

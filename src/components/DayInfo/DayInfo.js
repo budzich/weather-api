@@ -15,15 +15,18 @@ const DayInfo = () => {
   });
 
   const [time, setTime] = useState(
-    data.getCity.location.localTime + data.getCity.location.localTimeDifference * 3600
+    new Date().getTime() + data.getCity.location.localTimeDifference * 3600 * 1000
   );
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(time + 60);
-      clearInterval(timer)
-    }, 60*1000);
-  }, [time])
+      setTime(new Date().getTime() + data.getCity.location.localTimeDifference * 3600 * 1000);
+    }, 10000);
+
+    return () => {
+      clearInterval(timer);
+    }
+  })
 
   return (
     <div>

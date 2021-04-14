@@ -1,7 +1,32 @@
-.menu {
+.menu, .hidden-menu {
     height: 100vh;
     width: 87vw;
+    box-sizing: border-box;
     background: black;
+    z-index: 3;
+    animation: showMenu 0.3s both;
+}
+
+.hidden-menu {
+    width: 0;
+    animation: hideMenu 0.3s both;
+}
+
+.menu__open {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    z-index: 3;
+    height: 40px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.menu__icon {
+    width: 100%;
+    padding: 2px;
+    box-sizing: border-box;
 }
 
 .menu__favorite {
@@ -9,4 +34,41 @@
     font-size: 26px;
     padding-top: 20px;
     text-align: center;
+}
+
+.menu__close {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 17vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    animation: showCloseMenu 0.3s both;
+}
+
+@keyframes hideMenu {
+    0% {
+        width: 100vw;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes showMenu {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 87vw;
+    }
+}
+
+@keyframes showCloseMenu {
+    0% {
+        width: 60vh;
+    }
+    100% {
+        width: 17vw;
+    }
 }
