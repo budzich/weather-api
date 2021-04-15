@@ -16,7 +16,7 @@ module.exports = gql`
     }
     
     extend type Mutation {
-        addFavorite(title: String!, info: String!): String!
-        removeFavorite(title: String!): String!
+        addFavorite(info: String!): Favorite!
+        removeFavorite(info: String!): String!
     }
 `
