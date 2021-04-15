@@ -1,5 +1,6 @@
 .menu, .hidden-menu {
-    height: 100vh;
+    min-height: 100vh;
+    overflow: auto;
     width: 87vw;
     box-sizing: border-box;
     background: black;
@@ -60,7 +61,7 @@
 }
 
 .menu__favorite-input::placeholder {
-    color: #dbdbdb;
+    color: #b0b0b0;
 }
 
 .menu__favorite-add {

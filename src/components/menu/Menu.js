@@ -6,10 +6,10 @@ import {
   MENU_CLOSED,
   MENU_HIDDEN,
   MENU_OPENED
-} from "../../helpers/constants";
-import {useState} from "react";
-import {useMutation, useQuery} from "@apollo/client";
-import Favorite from "../favorite";
+} from '../../helpers/constants';
+import {useState} from 'react';
+import {useMutation, useQuery} from '@apollo/client';
+import Favorite from '../favorite';
 
 const Menu = () => {
   const [menuState, setMenuState] = useState(MENU_CLOSED);
@@ -23,20 +23,24 @@ const Menu = () => {
   };
 
   const handleOpen = () => {
-    setMenuState(MENU_OPENED)
+    setMenuState(MENU_OPENED);
   };
 
   const handleClose = () => {
-    setMenuState(MENU_HIDDEN)
+    setMenuState(MENU_HIDDEN);
   };
 
   const handleAdd = () => {
+    if (favorite.length <= 2) {
+      return null;
+    }
+
     addFavorite({
       variables: {
         info: favorite,
       },
       refetchQueries: [{query: getFavorites}]
-    })
+    });
 
     setFavorite('');
   };
@@ -46,7 +50,7 @@ const Menu = () => {
       <button className="menu__open" onClick={handleOpen}>
         <img className="menu__icon" src="./menu.png" alt="err"/>
       </button>
-    )
+    );
   }
 
   if (menuState === MENU_HIDDEN) {
@@ -56,7 +60,7 @@ const Menu = () => {
           <img className="menu__icon" src="./menu.png" alt="err"/>
         </button>
       </div>
-    )
+    );
   }
 
   return (

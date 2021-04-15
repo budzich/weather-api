@@ -152,11 +152,7 @@ export const getFavorites = gql`
 
 export const addFavorite = gql`
     mutation addFavorite($info: String!) {
-        addFavorite(info: $info) {
-            title
-            id
-            info
-        }
+        addFavorite(info: $info)
     }
 `
 
