@@ -29,7 +29,7 @@
     box-sizing: border-box;
 }
 
-.menu__favorite {
+.menu__favorite-title {
     color: #b1b1b1;
     font-size: 26px;
     padding-top: 20px;
@@ -44,6 +44,34 @@
     top: 0;
     right: 0;
     animation: showCloseMenu 0.3s both;
+}
+
+.menu__favorite-new {
+    display: flex;
+    padding: 20px;
+}
+
+.menu__favorite-input {
+    width: 100%;
+    font-size: 20px;
+    color: #dbdbdb;
+    background: none;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.menu__favorite-input::placeholder {
+    color: #dbdbdb;
+}
+
+.menu__favorite-add {
+    padding-left: 20px;
+    font-size: 40px;
+    line-height: 16px;
+    color: #dbdbdb;
+}
+
+.menu__favorites {
+    padding-left: 20px;
 }
 
 @keyframes hideMenu {

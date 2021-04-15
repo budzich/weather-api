@@ -139,3 +139,29 @@ export const GetWeekWeather = gql`
         }
     }
 `;
+
+export const getFavorites = gql`
+    query {
+        getFavorites {
+            id
+            title
+            info
+        }
+    }
+`;
+
+export const addFavorite = gql`
+    mutation addFavorite($info: String!) {
+        addFavorite(info: $info) {
+            title
+            id
+            info
+        }
+    }
+`
+
+export const removeFavorite = gql`
+    mutation addFavorite($info: String!) {
+        removeFavorite(info: $info) 
+    }
+`

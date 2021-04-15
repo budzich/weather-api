@@ -1,4 +1,8 @@
+const axios = require("axios");
 const {ApolloError} = require("apollo-server");
+
+const WEATHER_API = `http://api.weatherapi.com/v1/current.json?key=${process.env.KEY}`;
+
 module.exports = {
   Query: {
     async getFavorites(obj, arg, {models}) {
@@ -9,27 +13,34 @@ module.exports = {
   },
 
   Mutation: {
-    async addFavorite(obj, {title, info}, {models}) {
-      const isExists = await models.Favorite.findOne({where: {title}})
+    async addFavorite(obj, {info}, {models}) {
+      const isExists = await models.Favorite.findOne({where: {info}})
 
       if (isExists) {
         throw new ApolloError('Place already in use')
       }
 
-      await models.Favorite.create({title, info})
+      const {data} = await axios.get(`${WEATHER_API}&q=${info}&days=7`);
 
-      return 'Success!'
+      if (data.error)
+        return null;
+
+      await models.Favorite.create({title: data.location.name, info})
+
+      const result = await models.Favorite.findOne({where: {info}});
+
+      return result.dataValues;
     },
 
-    async removeFavorite(obj, {title}, {models}) {
-      const isExists = await models.Favorite.findOne({where: {title}})
+    async removeFavorite(obj, {info}, {models}) {
+      const isExists = await models.Favorite.findOne({where: {info}})
       if (!isExists) {
         throw new ApolloError('Place doesnt in use')
 
 
       }
 
-      await models.Favorite.destroy({where: {title}})
+      await models.Favorite.destroy({where: {info}})
 
       return 'Success!'
     }
