@@ -12,7 +12,7 @@ const Favorite = ({el, setMenuState}) => {
       variables: {
         info: el.info,
       },
-      update: (store, {data}) => {
+      update: (store) => {
         store.modify({
           fields: {
             getFavorites(existing) {

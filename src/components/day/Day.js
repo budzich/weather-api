@@ -1,6 +1,6 @@
 import React from 'react';
 import './day.css';
-import DayInfo from '../DayInfo';
+import DayInfo from '../dayInfo';
 import HoursInfo from '../hoursInfo';
 
 const Day = () => {

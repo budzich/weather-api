@@ -1,7 +1,7 @@
 import './locationButton.css';
 import React from 'react';
 import {useState} from 'react';
-import ModalSearch from "../ModalSearch";
+import ModalSearch from "../modalSearch";
 import {SEARCH_CLOSED, SEARCH_OPENED} from "../../helpers/constants";
 
 const LocationButton = () => {
