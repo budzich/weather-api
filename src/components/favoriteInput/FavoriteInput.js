@@ -1,6 +1,6 @@
 import './favoriteInput.css';
 import React, {useState} from 'react';
-import {addFavorite as addFavoriteGql, getFavorites} from '../../helpers/constants';
+import {addFavorite as addFavoriteGql} from '../../helpers/constants';
 import {useMutation} from '@apollo/client';
 
 const FavoriteInput = () => {
@@ -14,6 +14,7 @@ const FavoriteInput = () => {
 
   const handleAdd = () => {
     if (favorite.length <= 2) {
+      console.log('The request must be more than 2 characters in length');
       return null;
     }
 
@@ -21,9 +22,20 @@ const FavoriteInput = () => {
       variables: {
         info: favorite,
       },
-      errorPolicy: 'all',
-      refetchQueries: [{query: getFavorites}]
-    });
+      update: (cache) => {
+        cache.modify({
+          fields: {
+            getFavorites() {
+            }
+          }
+        });
+      }
+    })
+      .catch(e => {
+        e.graphQLErrors.forEach(({message}) => {
+          console.log(message);
+        });
+      });
 
     setFavorite('');
   };

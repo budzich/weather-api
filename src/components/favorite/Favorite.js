@@ -1,6 +1,6 @@
 import './favorite.css';
-import {useMutation} from "@apollo/client";
-import {MENU_HIDDEN, removeFavorite, userLocation} from "../../helpers/constants";
+import {useMutation} from '@apollo/client';
+import {MENU_HIDDEN, removeFavorite, userLocation} from '../../helpers/constants';
 import {useContext} from 'react';
 
 const Favorite = ({el, setMenuState}) => {
@@ -12,22 +12,16 @@ const Favorite = ({el, setMenuState}) => {
       variables: {
         info: el.info,
       },
-      update: (store) => {
-        store.modify({
-          fields: {
-            getFavorites(existing) {
-              return existing.filter(favorite => favorite.__ref.split(':')[1] !== el.id);
-            }
-          }
-        })
+      update: (cache, {data}) => {
+        cache.evict({id: cache.identify(data.removeFavorite)});
       }
-    })
-  }
+    });
+  };
 
   const handleClick = () => {
     setLocation(el.info);
     setMenuState(MENU_HIDDEN);
-  }
+  };
 
   return (
     <div className="favorite">

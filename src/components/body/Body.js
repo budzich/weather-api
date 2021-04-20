@@ -18,7 +18,7 @@ const Body = () => {
     return <p className="alert">Loading...</p>;
   }
 
-  if (data.getCity) {
+  if (data?.getCity) {
     return (
       <div>
         <Day/>

@@ -152,12 +152,19 @@ export const getFavorites = gql`
 
 export const addFavorite = gql`
     mutation addFavorite($info: String!) {
-        addFavorite(info: $info)
+        addFavorite(info: $info) {
+            id
+            title
+            info
+            createdAt
+        }
     }
-`
+`;
 
 export const removeFavorite = gql`
     mutation addFavorite($info: String!) {
-        removeFavorite(info: $info) 
+        removeFavorite(info: $info) {
+            id
+        }
     }
-`
+`;

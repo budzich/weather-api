@@ -24,15 +24,14 @@ module.exports = {
         const {data} = await axios.get(`${WEATHER_API}&q=${info}&aqi=no`);
 
         if (data.error)
-          return 'Error!';
+          new ApolloError('Place not found');
 
         await models.Favorite.create({title: data.location.name, info});
       } catch (err) {
-        return 'Error!';
+        throw new ApolloError('Error!');
       }
 
-
-      return 'Success!';
+      return await models.Favorite.findOne({where: {info}});
     },
 
     async removeFavorite(obj, {info}, {models}) {
@@ -43,7 +42,7 @@ module.exports = {
 
       await models.Favorite.destroy({where: {info}});
 
-      return 'Success!';
+      return isExists.dataValues;
     }
   }
 };

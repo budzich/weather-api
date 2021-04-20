@@ -9,9 +9,8 @@ export const formatDate = (time) => {
 
 export const sliceHours = (arr, arr2, difference) => {
   const hour = new Date().getHours() + +difference;
-  const hoursToday = 23 - hour;
 
-  return [...arr.slice(hour, hour + hoursToday), ...arr2.slice(0, 23 - hoursToday)];
+  return [...arr.slice(hour, hour + 24), ...arr2.slice(0, hour)];
 };
 
 export const formatDay = time => {
